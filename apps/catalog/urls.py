@@ -6,5 +6,5 @@ app_name = 'catalog'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('/feedback', views.feedback, name='feedback'),
+    path('feedback/', views.feedback, name='feedback'),
 ]

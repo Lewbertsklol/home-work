@@ -1,0 +1,92 @@
+[
+    {
+        "model": "catalog.category",
+        "pk": 1,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория0",
+            "description": "описание0"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 2,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория1",
+            "description": "описание1"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 3,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория2",
+            "description": "описание2"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 4,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория3",
+            "description": "описание3"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 5,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория4",
+            "description": "описание4"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 6,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория5",
+            "description": "описание5"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 7,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория6",
+            "description": "описание6"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 8,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория7",
+            "description": "описание7"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 9,
+        "fields": {
+            "created_at": "2024-07-01T15:45:54.327Z",
+            "updated_at": "2024-07-01T15:45:54.327Z",
+            "name": "категория8",
+            "description": "описание8"
+        }
+    }
+]
