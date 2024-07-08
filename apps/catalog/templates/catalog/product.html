@@ -1,0 +1,11 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+
+    <h1>{{ product }}</h1>
+    <img src="{{ product.image.url }}" alt="" width="200" height="300" />
+    <p>{{ product.description }}</p>
+    <p>{{ product.price|floatformat }}р</p>
+    <a href="{% url 'catalog:index' %}" class="btn btn-warning">Назад</a>
+
+{% endblock content %}
