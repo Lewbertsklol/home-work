@@ -10,3 +10,8 @@ def img_url(obj):
         return obj.image.url
     except Exception:
         return ''
+
+
+@register.inclusion_tag('catalog/includes/card.html')
+def card(product):
+    return {'product': product}
