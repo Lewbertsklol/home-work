@@ -1,13 +1,10 @@
 {% extends "catalog/base.html" %}
-{% load custom_tags %}
 
 {% block content %}
   <h1>Каталог</h1>
-  <div>
-    <div class="row w-100">
-      {% for product in product_list %}
-        {% card product %}
-      {% endfor %}
-    </div>
+  <div class="row w-100">
+    {% for product in product_list %}
+      {% include 'catalog/includes/card.html' with product=product %}
+    {% endfor %}
   </div>
 {% endblock content %}
