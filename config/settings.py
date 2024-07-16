@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     # Apps:
     'apps.catalog',
+    'apps.posts',
 
     # Extensions:
     'django_extensions',

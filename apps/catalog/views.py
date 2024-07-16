@@ -1,25 +1,23 @@
-from django.shortcuts import render
-
+from django.views import generic
+from django.shortcuts import redirect, render
 # Create your views here.
 
 from .models import Product
 
 
-def index_view(request):
-    product_list = Product.objects.all()
-    return render(request, 'catalog/index.html', {
-        'product_list': product_list
-    })
+class ProductListView(generic.ListView):
+    model = Product
 
 
-def product_view(request, pk):
-    product = Product.objects.get(pk=pk)
-    return render(request, 'catalog/product.html', {
-        'product': product
-    })
+class ProductDetailView(generic.DetailView):
+    model = Product
 
 
-def feedback_view(request):
-    if request.method == 'POST':
+class FeedbackView(generic.View):
+
+    def get(self, request):
+        return render(request, 'catalog/feedback.html')
+
+    def post(self, request):
         print(request.POST)
-    return render(request, 'catalog/feedback.html')
+        return redirect('catalog:product_list')

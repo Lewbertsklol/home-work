@@ -12,7 +12,7 @@
                 <h5>{{ product.price|floatformat }}₽</h5>
             </div>
             <p class="card-text text-truncate">{{ product.description }}</p>
-            <a href="{% url 'catalog:product' pk=product.pk %}"
+            <a href="{% url 'catalog:product_detail' pk=product.pk %}"
                class="btn btn-warning">Открыть</a>
         </div>
     </div>
