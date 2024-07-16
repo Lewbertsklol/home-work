@@ -11,8 +11,12 @@
                          alt="{{ post.title }}" />
                 {% endif %}
             </div>
-
-            <p class="card-text text-truncate">Количество просмотров: {{ post.views_count }}</p>
+            <div class="d-flex gap-2">
+                <p class="card-text text-truncate">Количество просмотров: {{ post.views_count }} /</p>
+                <p class="card-text text-truncate">Дата публикации: {{ post.created_at }} /</p>
+                <p class="card-text text-truncate">Дата последнего редактирования: {{ post.updated_at }}</p>
+            </div>
+            
             <div class="d-flex gap-2">
                 <a href="{% url 'posts:post_detail' pk=post.pk %}"
                    class="btn btn-warning">Открыть</a>
