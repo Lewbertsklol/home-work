@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     # Extensions:
     'django_extensions',
+    'widget_tweaks',
 
     # Default:
     'django.contrib.admin',

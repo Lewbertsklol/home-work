@@ -1,10 +1,15 @@
 {% extends "catalog/base.html" %}
 
 {% block content %}
-  <h1>Каталог</h1>
-  <div class="row w-100">
-    {% for product in product_list %}
-      {% include 'catalog/includes/card.html' with product=product %}
-    {% endfor %}
+  <div class="container">
+    <h1>Каталог</h1>
+    <div class="row w-100">
+      {% if product_list %}
+        {% for product in product_list %}
+          {% include "catalog/includes/card.html" with product=product %}
+        {% endfor %}
+      {% endif %}
+      {% include "catalog/includes/card.html" %}
+    </div>
   </div>
 {% endblock content %}

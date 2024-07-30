@@ -17,10 +17,9 @@ class PostCreateView(generic.CreateView):
     success_url = reverse_lazy('posts:post_list')
 
     def form_valid(self, form):
-        if form.is_valid():
-            form.instance.slug = slugify(form.instance.title)
-            form.save()
-            return super().form_valid(form)
+        form.instance.slug = slugify(form.instance.title)
+        form.save()
+        return super().form_valid(form)
 
 
 class PostDetailView(generic.DetailView):
