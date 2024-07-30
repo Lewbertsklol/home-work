@@ -1,19 +1,41 @@
+{% load static %}
 {% load custom_tags %}
 
-<div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2">
-    <div class="card " style="width: 18rem;">
-        <img src="{{ product|img_url }}"
-             class="card-img-top"
-             alt="{{ product.name }}"
-             height="400" />
-        <div class="card-body">
-            <div class="card-title d-flex justify-content-between">
-                <h5 class="text-truncate">{{ product.name }}</h5>
-                <h5>{{ product.price|floatformat }}₽</h5>
+{% if product %}
+    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ product|img_url }}"
+                 class="card-img-top"
+                 alt="{{ product.name }}"
+                 height="400" />
+            <div class="card-body">
+                <div class="card-title d-flex justify-content-between">
+                    <h5 class="text-truncate">{{ product.name }}</h5>
+                    <h5>{{ product.price|floatformat }}₽</h5>
+                </div>
+                <p class="card-text text-truncate">{{ product.description }}</p>
+                <div class="card-title d-flex justify-content-between">
+                    <a href="{% url 'catalog:product_detail' pk=product.pk %}"
+                       class="btn btn-warning">Открыть</a>
+
+                    <form method="post"
+                          action="{% url 'catalog:product_delete' pk=product.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">
+                            <img src="{% static 'icons/trash3-fill.svg' %}" alt="delete">
+                        </button>
+                    </form>
+                </div>
             </div>
-            <p class="card-text text-truncate">{{ product.description }}</p>
-            <a href="{% url 'catalog:product_detail' pk=product.pk %}"
-               class="btn btn-warning">Открыть</a>
         </div>
     </div>
-</div>
+{% else %}
+    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2">
+        <div class="card text-center" style="width: 18rem;">
+            <h1 style="font-size: 24.6rem;">+</h1>
+            <div class="card-body">
+                <a href="{% url 'catalog:product_form' %}" class="btn btn-warning">Добавить</a>
+            </div>
+        </div>
+    </div>
+{% endif %}

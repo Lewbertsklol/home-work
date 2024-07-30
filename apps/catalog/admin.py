@@ -1,7 +1,9 @@
 from django.contrib import admin
 
-from .models import Category, Product
+from .models import Category, Product, Censor, Version
 # Register your models here.
+
+admin.site.register((Censor, Version))
 
 
 @admin.register(Category)

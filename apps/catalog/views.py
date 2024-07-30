@@ -1,16 +1,35 @@
 from django.views import generic
+from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
 # Create your views here.
 
-from .models import Product
+from .forms import ProductForm
+from .models import Product, Version
 
 
 class ProductListView(generic.ListView):
     model = Product
 
+    def get_context_data(self, **kwargs):
+        context = {
+            'versions': Version.objects.all(),
+        }
+        return super().get_context_data(**kwargs, **context)
+
+
+class ProductCreateView(generic.CreateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:product_list')
+
 
 class ProductDetailView(generic.DetailView):
     model = Product
+
+
+class ProductDeleteView(generic.DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:product_list')
 
 
 class FeedbackView(generic.View):
@@ -19,5 +38,4 @@ class FeedbackView(generic.View):
         return render(request, 'catalog/feedback.html')
 
     def post(self, request):
-        print(request.POST)
         return redirect('catalog:product_list')
