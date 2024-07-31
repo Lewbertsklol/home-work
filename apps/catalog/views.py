@@ -10,12 +10,6 @@ from .models import Product, Version
 class ProductListView(generic.ListView):
     model = Product
 
-    def get_context_data(self, **kwargs):
-        context = {
-            'versions': Version.objects.all(),
-        }
-        return super().get_context_data(**kwargs, **context)
-
 
 class ProductCreateView(generic.CreateView):
     model = Product
