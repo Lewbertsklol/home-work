@@ -1,0 +1,41 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-3">
+        {% if version_list %}
+            {% for version in version_list %}
+                <div class="col-4 border {% if version.is_current %}border-warning{% endif %} rounded-3 mb-3 p-3">
+                    <p>Версия № {{ version.number }}: {{ version.name }}</p>
+                    <div class="d-flex gap-2">
+                        <form action="{% url 'catalog:version_toggle' pk=version.pk %}"
+                              method="post">
+                            {% csrf_token %}
+                            <label for="{{ version.pk }}">Версия:</label>
+                            {% if version.is_current %}
+                                <a href="{% url 'catalog:version_toggle' pk=version.pk %}"
+                                   class="btn btn-warning">Активная</a>
+                            {% else %}
+                                <a href="{% url 'catalog:version_toggle' pk=version.pk %}"
+                                   class="btn btn-dark">Не активная</a>
+                            {% endif %}
+                        </form>
+                        <form action="{% url 'catalog:version_delete' pk=version.pk %}"
+                              method="post">
+                            {% csrf_token %}
+                            <button class="btn btn-danger" type="submit">
+                                <img src="{% static 'icons/trash3-fill.svg' %}" alt="trash">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <a href="{% url 'catalog:version_form' product_pk=product_pk %}"
+           class="btn btn-warning">Добавить</a>
+        <br>
+        <br>
+        <a href="{% url 'catalog:product_detail' pk=product_pk %}"
+           class="btn btn-warning">Назад</a>
+    </div>
+{% endblock content %}

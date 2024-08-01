@@ -6,13 +6,14 @@
         <div class="card" style="width: 18rem;">
             <img src="{{ product|img_url }}"
                  class="card-img-top"
-                 alt="{{ product|current_version_name }}"
+                 alt="{{ product.name }}"
                  height="400" />
             <div class="card-body">
                 <div class="card-title d-flex justify-content-between">
-                    <h5 class="text-truncate">{{ product|current_version_name }}</h5>
+                    <h5 class="text-truncate">{{ product.name }}</h5>
                     <h5>{{ product.price|floatformat }}₽</h5>
                 </div>
+                <p class="card-text text-truncate">{{ product|current_version_info }}</p>
                 <p class="card-text text-truncate">{{ product.description }}</p>
                 <div class="card-title d-flex justify-content-between">
                     <a href="{% url 'catalog:product_detail' pk=product.pk %}"

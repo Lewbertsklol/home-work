@@ -11,6 +11,12 @@ def img_url(obj):
     except Exception:
         return ''
 
-@register.filter(name='current_version_name')
+
+@register.filter(name='current_version_info')
 def current_version_name(obj):
-    return 'obj.versions.filter(is_current=True).first().name'
+    current_version = obj.versions.filter(is_current=True)
+    if current_version.exists():
+        current_version = current_version.first()
+        return f'Версия № {current_version.number}: {current_version.name}'
+
+    return ''

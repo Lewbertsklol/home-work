@@ -1,0 +1,25 @@
+{% extends 'catalog/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <div class="container text-center mt-5">
+        <h1>Добавить версию</h1>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            <label for="{{ form.name.id_for_label }}">Название версии:</label>
+            {% render_field form.name type="text" class="form-control" %}
+            <br>
+            <label for="{{ form.number.id_for_label }}">Номер версии:</label>
+            {% render_field form.number type="number" class="form-control" %}
+            {% for error in form.number.errors %}<div class="alert alert-danger">{{ error }}</div>{% endfor %}
+            <br>
+            <label for="{{ form.is_current.id_for_label }}">Активная версия:</label>
+            {% render_field form.is_current type="checkbox" class="form-check-inline" %}
+            <br>
+            <br>
+            <button type="submit" class="btn btn-warning">Сохранить</button>
+        </form>
+    </div>
+
+{% endblock content %}

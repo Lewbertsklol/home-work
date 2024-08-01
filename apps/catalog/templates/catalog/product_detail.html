@@ -8,6 +8,11 @@
         <img src="{{ product|img_url }}" alt="" width="200" height="300" />
         <p>{{ product.description }}</p>
         <p>{{ product.price|floatformat }}р</p>
+
+        <a href="{% url 'catalog:version_list' product_pk=product.pk %}"
+           class="btn btn-warning">Список версий</a>
+        <br>
+        <br>
         <a href="{% url 'catalog:product_list' %}" class="btn btn-warning">Назад</a>
     </div>
 

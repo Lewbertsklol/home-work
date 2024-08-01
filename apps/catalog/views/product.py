@@ -1,10 +1,8 @@
 from django.views import generic
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, render
-# Create your views here.
 
-from .forms import ProductForm
-from .models import Product, Version
+from apps.catalog.models import Product
+from apps.catalog.forms import ProductForm
 
 
 class ProductListView(generic.ListView):
@@ -24,12 +22,3 @@ class ProductDetailView(generic.DetailView):
 class ProductDeleteView(generic.DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:product_list')
-
-
-class FeedbackView(generic.View):
-
-    def get(self, request):
-        return render(request, 'catalog/feedback.html')
-
-    def post(self, request):
-        return redirect('catalog:product_list')
