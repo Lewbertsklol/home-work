@@ -22,5 +22,5 @@
 ## Urls users:
 ![alt text](image-6.png)
 
-## Email backend settings:
+## Email backend settings (пароль деактивирован):
 ![alt text](image-9.png)
