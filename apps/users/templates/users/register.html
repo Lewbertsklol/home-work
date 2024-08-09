@@ -1,0 +1,35 @@
+{% extends 'catalog/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+    <div class="container text-center d-flex justify-content-center">
+        <div class="row">
+            <div class="col-12">
+                <form method="post" action="{% url 'users:register' %}">
+                    {% csrf_token %}
+                    <label for="{{ form.email.id_for_label }}">Адрес электронной почты</label>
+                    {% render_field form.email type="email" class="form-control" %}
+                    {% for error in form.email.errors %}<div class="alert alert-danger">{{ error }}</div>{% endfor %}
+
+                    <label for="{{ form.password1.id_for_label }}">Пароль</label>
+                    {% render_field form.password1 type="password" class="form-control" %}
+                    {% for error in form.password1.errors %}<div class="alert alert-danger">{{ error }}</div>{% endfor %}
+
+                    <label for="{{ form.password2.id_for_label }}">Повторите пароль</label>
+                    {% render_field form.password2 type="password" class="form-control" %}
+                    {% for error in form.password2.errors %}<div class="alert alert-danger">{{ error }}</div>{% endfor %}
+
+                    <br />
+                    <button type="submit" class="btn btn-warning" id="submit-button">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function() {
+            alert('После успешной регистрации на вашу почту будет отправлено письмо для подтверждения регистрации. Не забудьте проверить папку "Спам".');
+        });
+    </script>
+
+{% endblock content %}

@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     # Apps:
+    'apps.users',
     'apps.catalog',
     'apps.posts',
 
@@ -117,6 +118,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -142,3 +146,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email settings
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'lewbertsklol@yandex.ru'
+EMAIL_HOST_PASSWORD = 'hotrxvxdcmhdsuzx'
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'lewbertsklol@yandex.ru'

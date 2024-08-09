@@ -3,13 +3,18 @@
 {% block content %}
   <div class="container">
     <h1>Каталог</h1>
-    <div class="row w-100">
+    <div class="row">
       {% if product_list %}
         {% for product in product_list %}
           {% include "catalog/includes/card.html" with product=product %}
         {% endfor %}
       {% endif %}
-      {% include "catalog/includes/card.html" %}
     </div>
+    {% if user.is_authenticated %}
+      <div class="btn-float w-auto">
+        <a href="{% url 'catalog:product_form' %}"
+           class="btn btn-warning btn-lg rounded-circle">+</a>
+      </div>
+    {% endif %}
   </div>
 {% endblock content %}

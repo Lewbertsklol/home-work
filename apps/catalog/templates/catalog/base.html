@@ -8,11 +8,12 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <script defer src="{% static 'js/htmx.min.js' %}"></script>
     <script defer src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <title>Shoppify</title>
   </head>
-  <body data-bs-theme="dark" id="body">
+  <body data-bs-theme="dark" id="body" hx-boost="true">
     {% include "catalog/includes/header.html" %}
     {% block content %}
 
