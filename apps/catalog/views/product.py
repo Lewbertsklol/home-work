@@ -14,6 +14,7 @@ class ProductCreateView(LoginRequiredMixin, EmailVerifiedRequiredMixin, generic.
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
+    login_url = reverse_lazy('users:login')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -23,6 +24,12 @@ class ProductCreateView(LoginRequiredMixin, EmailVerifiedRequiredMixin, generic.
 
 class ProductDetailView(LoginRequiredMixin, EmailVerifiedRequiredMixin, generic.DetailView):
     model = Product
+
+
+class ProductUpdateView(LoginRequiredMixin, EmailVerifiedRequiredMixin, generic.UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:product_list')
 
 
 class ProductDeleteView(LoginRequiredMixin, EmailVerifiedRequiredMixin, generic.DeleteView):

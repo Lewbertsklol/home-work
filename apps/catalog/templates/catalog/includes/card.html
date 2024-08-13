@@ -16,6 +16,10 @@
             <div class="card-title d-flex justify-content-between">
                 <a href="{% url 'catalog:product_detail' pk=product.pk %}"
                    class="btn btn-warning">Открыть</a>
+                {% if request.user == product.user or perms.product.can_change_product %}
+                    <a href="{% url 'catalog:product_update' pk=product.pk %}"
+                       class="btn btn-warning">Изменить</a>
+                {% endif %}
 
                 <form method="post"
                       action="{% url 'catalog:product_delete' pk=product.pk %}">

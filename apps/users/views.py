@@ -19,18 +19,19 @@ class RegisterView(generic.CreateView):
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:login')
 
-    def form_valid(self, form):
-        email = form.cleaned_data.get('email')
-        encoded_email = urlsafe_base64_encode(bytes(email, 'utf-8'))
-        url = reverse('users:email-verification', kwargs={'email': encoded_email})
-        full_url = f'{self.request.scheme}://{self.request.get_host()}{url}'
-        send_mail(
-            'Подтверждение электронной почты',
-            f'Для подтверждения адреса электронной почты перейдите по ссылке: {full_url}',
-            None,
-            recipient_list=[email],
-        )
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    # """ Send email for verification """
+    #     email = form.cleaned_data.get('email')
+    #     encoded_email = urlsafe_base64_encode(bytes(email, 'utf-8'))
+    #     url = reverse('users:email-verification', kwargs={'email': encoded_email})
+    #     full_url = f'{self.request.scheme}://{self.request.get_host()}{url}'
+    #     send_mail(
+    #         'Подтверждение электронной почты',
+    #         f'Для подтверждения адреса электронной почты перейдите по ссылке: {full_url}',
+    #         None,
+    #         recipient_list=[email],
+    #     )
+    #     return super().form_valid(form)
 
 
 def email_verification(request: HttpRequest, email):
