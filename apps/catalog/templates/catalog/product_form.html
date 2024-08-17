@@ -24,6 +24,10 @@
             <label for="{{ form.price.id_for_label }}">Цена:</label>
             {% render_field form.price type="number" class="form-control" %}
             <br>
+            <label for="{{ form.is_published.id_for_label }}">{{ form.is_published.label }}</label>
+            {% render_field form.is_published type="checkbox" class="form-check-inline" %}
+            <br>
+            <br>
             <button type="submit" class="btn btn-warning">Сохранить</button>
         </form>
     </div>

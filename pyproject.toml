@@ -16,7 +16,14 @@ django-extensions = "^3.2.3"
 ipython = "^8.26.0"
 pytils = "^0.4.1"
 django-widget-tweaks = "^1.5.0"
+django-types = "^0.19.1"
 
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+reportAttributeAccessIssue = false
+reportIncompatibleVariableOverride = false
+reportIncompatibleMethodOverride = false
 
 [build-system]
 requires = ["poetry-core"]

@@ -89,6 +89,20 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-types"
+version = "0.19.1"
+description = "Type stubs for Django"
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "django_types-0.19.1-py3-none-any.whl", hash = "sha256:b3f529de17f6374d41ca67232aa01330c531bbbaa3ac4097896f31ac33c96c30"},
+    {file = "django_types-0.19.1.tar.gz", hash = "sha256:5ae7988612cf6fbc357b018bbc3b3a878b65e04275cc46e0d35d66a708daff12"},
+]
+
+[package.dependencies]
+types-psycopg2 = ">=2.9.21.13"
+
+[[package]]
 name = "django-widget-tweaks"
 version = "1.5.0"
 description = "Tweak the form field rendering in templates, not in python-level form definitions."
@@ -520,6 +534,17 @@ docs = ["myst-parser", "pydata-sphinx-theme", "sphinx"]
 test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest (>=7.0,<8.2)", "pytest-mock", "pytest-mypy-testing"]
 
 [[package]]
+name = "types-psycopg2"
+version = "2.9.21.20240417"
+description = "Typing stubs for psycopg2"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "types-psycopg2-2.9.21.20240417.tar.gz", hash = "sha256:05db256f4a459fb21a426b8e7fca0656c3539105ff0208eaf6bdaf406a387087"},
+    {file = "types_psycopg2-2.9.21.20240417-py3-none-any.whl", hash = "sha256:644d6644d64ebbe37203229b00771012fb3b3bddd507a129a2e136485990e4f8"},
+]
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -555,4 +580,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "0591f92360190d38a3639bda8e1a393a20c1b730e362700a55d73cc02a330c5f"
+content-hash = "4eb578d2fc6ba0fe94d6bd6f3fe88a29052bc8f95dc075ec3a26eb6b38ecbb47"

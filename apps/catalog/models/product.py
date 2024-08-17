@@ -5,7 +5,7 @@ from .basemodel import BaseModel
 
 
 class Product(BaseModel):
-    user = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name=_('Пользователь'))
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name=_('Пользователь'), related_name='products')
     name = models.CharField(max_length=255, verbose_name=_('Название'))
     description = models.TextField(blank=True, verbose_name=_('Описание'))
     image = models.ImageField(upload_to='products/', blank=True, null=True, verbose_name=_('Изображение'))

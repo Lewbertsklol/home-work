@@ -1,8 +1,9 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from apps.catalog.models import Product
-from apps.catalog.forms import ProductForm
+from apps.catalog.forms import ModeratorProductForm, ProductForm
 from apps.users.permissions import EmailVerifiedRequiredMixin
 
 
@@ -28,8 +29,12 @@ class ProductDetailView(LoginRequiredMixin, EmailVerifiedRequiredMixin, generic.
 
 class ProductUpdateView(LoginRequiredMixin, EmailVerifiedRequiredMixin, generic.UpdateView):
     model = Product
-    form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
+
+    def get_form_class(self):
+        if self.request.user.groups.filter(name='moderator').exists():
+            return ModeratorProductForm
+        return ProductForm
 
 
 class ProductDeleteView(LoginRequiredMixin, EmailVerifiedRequiredMixin, generic.DeleteView):

@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import generic
+
 import random
 from string import ascii_letters, digits
 
