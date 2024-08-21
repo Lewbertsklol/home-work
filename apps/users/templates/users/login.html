@@ -1,28 +1,30 @@
-{% extends 'catalog/base.html' %}
-{% load widget_tweaks %}
+{% extends 'catalog/base.html' %} {% load widget_tweaks %} {% block content %}
 
-{% block content %}
+<div class="container text-center d-flex justify-content-center">
+    <div class="row">
+        <div class="col-12">
+            <form method="post">
+                {% csrf_token %}
 
-    <div class="container text-center d-flex justify-content-center">
-        <div class="row">
-            <div class="col-12">
-                <form method="post">
-                    {% csrf_token %}
-                    <label for="{{ form.username.id_for_label }}">Адрес электронной почты</label>
-                    {% render_field form.username type="email" class="form-control" %}
-
-                    {% for error in form.username.errors %}<div class="alert alert-danger">{{ error }}</div>{% endfor %}
-
-                    <label for="{{ form.password.id_for_label }}">Пароль</label>
-                    {% render_field form.password type="password" class="form-control" %}
-                    {% for error in form.password.errors %}<div class="alert alert-danger">{{ error }}</div>{% endfor %}
-
-                    <br />
-                    <a href="{% url 'users:reset-password' %}" class="btn btn-dark">Забыли пароль?</a>
-
-                    <button type="submit" class="btn btn-warning">Войти</button>
-                </form>
-            </div>
+                <label for="{{ form.username.id_for_label }}">
+                   s Адрес электронной почты
+                </label>
+                {% render_field form.username type="email" class="form-control"
+                %} {% for error in form.username.errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+                <label for="{{ form.password.id_for_label }}">Пароль</label>
+                {% render_field form.password type="password"
+                class="form-control" %} {% for error in form.password.errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+                <br />
+                <a href="{% url 'users:reset-password' %}" class="btn btn-dark"
+                    >Забыли пароль?
+                </a>
+                <button type="submit" class="btn btn-warning">Войти</button>
+            </form>
         </div>
     </div>
+</div>
 {% endblock content %}

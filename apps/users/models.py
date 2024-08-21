@@ -8,7 +8,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class CustomUserManager(UserManager):
-
     def _create_user(self, email, password, **extra_fields):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
@@ -29,19 +28,20 @@ class CustomUserManager(UserManager):
 
 
 class User(AbstractUser):
-
     username = None
-    email = models.EmailField(_('email address'), unique=True)
-    avatar = models.ImageField(upload_to='users', null=True, blank=True)
+    email = models.EmailField(_("email address"), unique=True)
+    avatar = models.ImageField(upload_to="users", null=True, blank=True)
     phone = models.CharField(max_length=255, null=True, blank=True)
     country = models.CharField(max_length=255, null=True, blank=True)
-    is_email_verified = models.BooleanField(default=False, verbose_name=_('Email подтверждён'))
+    is_email_verified = models.BooleanField(
+        default=False, verbose_name=_("Email подтверждён")
+    )
 
     objects = CustomUserManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     class Meta:
-        verbose_name = _('Пользователь')
-        verbose_name_plural = _('Пользователи')
+        verbose_name = _("Пользователь")
+        verbose_name_plural = _("Пользователи")
