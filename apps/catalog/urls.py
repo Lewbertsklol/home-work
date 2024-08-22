@@ -9,6 +9,8 @@ app_name = 'catalog'
 urlpatterns = [
     path('', views.ProductListView.as_view(), name='product_list'),
 
+    path('categories/', views.CategoryListView.as_view(), name='category_list'),
+    
     path('product/create/', views.ProductCreateView.as_view(), name='product_form'),
     path('product/<int:pk>/', cache_page(60)(views.ProductDetailView.as_view()), name='product_detail'),
     path('product/update/<int:pk>/', views.ProductUpdateView.as_view(), name='product_update'),

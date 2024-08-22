@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%ph($w@kc)h1)5(#=ovi7f&vc4q(+9j580m)&zk_l+*!(-yo98'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ["*"]
 
@@ -94,17 +94,17 @@ DATABASES = {
         'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT'),
         'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         'NAME': os.environ.get('DB_NAME'),
     }
 }
 
-CACHES_ENABLED = True
-if CACHES_ENABLED:
+CACHE_ENABLED = os.environ.get('CACHE_ENABLED') == 'True'
+if CACHE_ENABLED:
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.redis.RedisCache",
-            "LOCATION": "redis://127.0.0.1:6379",
+            "LOCATION": os.environ.get('LOCATION'),
         }
     }
 
